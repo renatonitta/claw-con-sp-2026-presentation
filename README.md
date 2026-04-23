@@ -1,6 +1,6 @@
 # Você não precisa de Mac mini para ter seu OpenClaw
 
-Slides da minha lightning talk no **Claw-con São Paulo 2026** — 5 minutos sobre como montei meu OpenClaw sem gastar muito, usando um notebook antigo + [Omarchy](https://omarchy.org/).
+Slides da minha lightning talk no **Claw-con São Paulo 2026** — 5 minutos sobre como montei meu OpenClaw sem gastar muito, usando um notebook antigo + Linux
 
 Por [@renatonitta](https://x.com/renatonitta).
 
