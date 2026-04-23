@@ -243,6 +243,29 @@
 
     .photo-card.tall img { max-height: 520px; }
 
+    /* Two-image side-by-side duo for the RAM slide. */
+    .ram-duo {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .ram-duo .photo-card { padding: 12px; }
+
+    .ram-duo .photo-card img {
+      max-height: 360px;
+      object-fit: cover;
+      border-radius: 16px;
+    }
+
+    .ram-duo .photo-card:first-child {
+      transform: rotate(-2deg);
+    }
+
+    .ram-duo .photo-card:last-child {
+      transform: rotate(2deg);
+    }
+
     .visual-card.wide {
       padding: 22px;
     }
@@ -531,11 +554,16 @@
         <div class="frame">
           <div class="grid compact">
             <div class="copy">
-              <div class="eyebrow">Upgrade</div>
-              <h3><strong>4GB</strong> de RAM<br>+ um pente = <strong>8GB</strong></h3>
+              <div class="eyebrow">Upgrade RAM</div>
+              <h3>4GB + 4GB = <strong>8GB</strong></h3>
             </div>
-            <div class="photo-card">
-              <img src="assets/memory_upgrade.jpeg" alt="Upgrade de memória">
+            <div class="ram-duo">
+              <div class="photo-card ram-photo">
+                <img src="assets/memory_stick.jpeg" alt="Pente de memória">
+              </div>
+              <div class="photo-card ram-photo">
+                <img src="assets/memory_upgrade.jpeg" alt="Upgrade de memória">
+              </div>
             </div>
           </div>
           <aside class="notes">
@@ -675,7 +703,7 @@
               <h2>Obrigado!</h2>
               <div class="thanks-name">Renato Nitta</div>
               <div class="thanks-handle">X · @renatonitta</div>
-              <div class="footer-note">Claw Con SP · 2026</div>
+              <div class="footer-note">Claw-con SP · 2026</div>
             </div>
           </div>
         </div>
