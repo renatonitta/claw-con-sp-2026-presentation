@@ -1,0 +1,407 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Claw Con SP 2026 — Renato Nitta</title>
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reset.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/theme/black.css" id="theme">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap">
+
+  <style>
+    :root {
+      --claw-red: #ff3b3b;
+      --claw-red-bright: #ff5c5c;
+    }
+
+    .reveal {
+      font-family: 'Inter', system-ui, sans-serif;
+      font-weight: 400;
+    }
+
+    .reveal h1, .reveal h2, .reveal h3 {
+      font-family: 'Inter', sans-serif;
+      font-weight: 800;
+      text-transform: none;
+      letter-spacing: -0.02em;
+      color: #fff;
+    }
+
+    .reveal .accent { color: var(--claw-red); }
+    .reveal strong { color: var(--claw-red-bright); }
+
+    /* Reveal's virtual slide is 960x700. Use px values relative to that
+       so centering is stable at every output resolution. */
+
+    .reveal section img.full {
+      display: block;
+      margin: 0 auto;
+      max-height: 520px;
+      max-width: 580px;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+      border-radius: 10px;
+      border: none;
+      box-shadow: 0 20px 60px rgba(255, 59, 59, 0.15);
+    }
+
+    .reveal section img.bare {
+      border: none;
+      background: transparent;
+      box-shadow: none;
+    }
+
+    /* Generic image-slide wrapper: heading on top, image below, both
+       centered as a single group inside the virtual slide. */
+    .reveal .img-slide {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.8em;
+      width: 100%;
+    }
+
+    .reveal .img-slide > h2,
+    .reveal .img-slide > h3 {
+      margin: 0;
+    }
+
+    .reveal .big-number {
+      font-size: 4.5em;
+      font-weight: 800;
+      color: var(--claw-red);
+      line-height: 1;
+      letter-spacing: -0.04em;
+    }
+
+    .reveal .label {
+      color: #888;
+      font-size: 0.5em;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      margin-top: 0.5em;
+    }
+
+    .reveal .kicker {
+      color: var(--claw-red);
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      font-size: 0.5em;
+      font-weight: 600;
+      margin-bottom: 0.8em;
+    }
+
+    .reveal .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5em;
+      align-items: center;
+      justify-items: center;
+      width: 100%;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .reveal .two-col img {
+      max-height: 430px;
+      max-width: 100%;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+      border-radius: 10px;
+      border: none;
+    }
+
+    /* Fan-out stack used on the results slide. */
+    .reveal .fan {
+      position: relative;
+      width: 960px;
+      height: 620px;
+      margin: 0 auto;
+    }
+
+    .reveal .fan img {
+      position: absolute;
+      top: 50%;
+      border-radius: 12px;
+      border: 4px solid #0a0a0a;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6),
+                  0 0 0 1px rgba(255, 59, 59, 0.25);
+      object-fit: contain;
+    }
+
+    .reveal .fan img:nth-child(1) {
+      left: 40px;
+      max-height: 540px;
+      transform: translateY(-50%) rotate(-7deg);
+      z-index: 1;
+    }
+
+    .reveal .fan img:nth-child(2) {
+      left: 50%;
+      max-height: 620px;
+      transform: translate(-50%, -50%);
+      z-index: 3;
+    }
+
+    .reveal .fan img:nth-child(3) {
+      right: 40px;
+      max-height: 540px;
+      transform: translateY(-50%) rotate(7deg);
+      z-index: 2;
+    }
+
+    .reveal .numbers-row {
+      display: flex;
+      justify-content: space-around;
+      align-items: flex-start;
+      gap: 2em;
+      margin-top: 1em;
+    }
+
+    .reveal .number-block .big-number { font-size: 3.5em; }
+
+    .reveal section.title-slide img {
+      max-width: 880px;
+      max-height: 560px;
+      border: none;
+      box-shadow: none;
+    }
+
+    .reveal .caption {
+      font-size: 0.4em;
+      color: #888;
+      margin-top: 0.8em;
+      letter-spacing: 0.05em;
+    }
+
+    .reveal .handle {
+      color: var(--claw-red);
+      font-weight: 600;
+    }
+
+    .reveal .title-main {
+      font-size: 1.6em;
+      line-height: 1.2;
+      max-width: 90%;
+      margin: 0 auto;
+    }
+
+    .reveal .accounts {
+      display: flex;
+      justify-content: center;
+      gap: 1.5em;
+      flex-wrap: wrap;
+      margin-top: 1.5em;
+    }
+
+    .reveal .account-chip {
+      padding: 0.5em 1.2em;
+      background: rgba(255, 59, 59, 0.1);
+      border: 1px solid var(--claw-red);
+      border-radius: 999px;
+      color: var(--claw-red-bright);
+      font-size: 0.8em;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+    }
+  </style>
+</head>
+<body>
+
+<div class="reveal">
+  <div class="slides">
+
+    <!-- 1. TITLE -->
+    <section data-background-color="#000" class="title-slide">
+      <h1 class="title-main">
+        Não precisa de <span class="strike" style="text-decoration: line-through; color:#888;">Mac mini</span><br>
+        para ter seu <span class="accent">OpenClaw</span>
+      </h1>
+      <p style="margin-top: 2em; font-size: 0.9em; color: #ccc;">
+        <span class="handle">@renatonitta</span>
+      </p>
+      <aside class="notes">
+        Você não precisa de Mac mini nem gastar muito para ter seu OpenClaw.
+        Eu sou o Renato, @renatonitta no X.
+      </aside>
+    </section>
+
+    <!-- 2. MAC MINI HYPE -->
+    <section data-background-color="#000">
+      <div class="img-slide">
+        <h2>Todo mundo instalando <span class="accent">OpenClaw</span> no Mac Mini 🤔</h2>
+        <img class="full" src="assets/macmini.jpg" alt="Mac Mini">
+      </div>
+      <aside class="notes">
+        Comecei a ver esse tal de OpenClaw no X — todo mundo instalando em Mac Mini.
+      </aside>
+    </section>
+
+    <!-- 3. DAUGHTER LAPTOP -->
+    <section data-background-color="#000">
+      <div class="img-slide">
+        <h3 style="font-size: 1.3em;">
+          Eu tinha um notebook antigo <br>
+        </h3>
+        <img class="full" src="assets/laptop_to_study_during_pandemics.jpg" alt="Filha estudando na pandemia">
+        <p>minha filha usou<br>para <strong>estudo</strong> 😴 durante a pandemia</p>
+      </div>
+      <aside class="notes">
+        Eu só tinha um notebook antigo que minha filha usou pra estudar — ou fingir que estudava — durante a pandemia.
+      </aside>
+    </section>
+
+    <!-- 4. OMARCHY -> UBUNTU -->
+    <section data-background-color="#000">
+      <div class="img-slide">
+        <h3 style="font-size: 1.3em;">
+          Comecei com <span class="accent">Linux Omarchy</span>,<br>
+          depois <span class="accent">Ubuntu</span>
+        </h3>
+        <div class="two-col">
+          <img src="assets/omarchy_setup_1.jpeg" alt="Omarchy setup 1">
+          <img src="assets/omarchy_setup_2.jpeg" alt="Omarchy setup 2">
+        </div>
+      </div>
+      <aside class="notes">
+        Comecei com Linux Omarchy. As dependências começaram a me atrasar, então migrei para Ubuntu.
+      </aside>
+    </section>
+
+    <!-- 5. RAM UPGRADE -->
+    <section data-background-color="#000">
+      <h3 style="margin-bottom: 0.8em; font-size: 1.2em;">
+        <strong>4GB</strong> de RAM upgrade para <strong>8GB</strong>.
+      </h3>
+      <img class="full" src="assets/memory_upgrade.jpeg" alt="Upgrade de memória">
+      <aside class="notes">
+        Tinha só 4 GB de RAM e funcionou. Depois comprei mais 4 GB, ficou 8 GB
+      </aside>
+    </section>
+
+    <!-- 6. COWORKING -->
+    <section data-background-color="#000">
+      <div class="img-slide">
+        <h3 style="font-size: 1.3em;">
+          Ele fica <strong>fechado</strong> na minha mesa do <span class="accent">Coworking</span>
+        </h3>
+        <img class="full" src="assets/coworking.jpeg" alt="Coworking">
+      </div>
+      <aside class="notes">
+        Ele fica fechado na minha mesa fixa do coworking. Ligado o tempo todo.
+      </aside>
+    </section>
+
+    <!-- 7. REMOTE ACCESS -->
+    <section data-background-color="#000">
+      <div class="img-slide">
+        <h3 style="font-size: 1.3em;">
+          Acesso via <span class="accent">RDP</span> com <span class="accent">Tailscale</span>
+        </h3>
+        <img class="full" src="assets/remote_access.png" alt="Acesso remoto">
+      </div>
+      <aside class="notes">
+        Quando preciso, acesso via RDP com Tailscale.
+      </aside>
+    </section>
+
+    <!-- 8. OWN ACCOUNTS -->
+    <section data-background-color="#0a0a0a">
+      <h2 style="margin-bottom: 0.5em;">
+        <span class="accent">próprias contas</span>
+      </h2>
+      <div class="accounts">
+        <div class="account-chip">Email</div>
+        <div class="account-chip">GitHub</div>
+        <div class="account-chip">X</div>
+      </div>
+      <aside class="notes">
+        Ele tem as próprias contas: email, GitHub e X.
+      </aside>
+    </section>
+
+    <!-- 9. SHARE FILES GITHUB -->
+    <section data-background-color="#000">
+      <div class="img-slide">
+        <h3 style="font-size: 1.3em;">
+          Compartilhamos arquivos pelo <span class="accent">GitHub</span>
+        </h3>
+        <img class="full" src="assets/share_files_github.jpeg" alt="Compartilhando arquivos via GitHub">
+      </div>
+      <aside class="notes">
+        A gente compartilha arquivos pelo GitHub.
+      </aside>
+    </section>
+
+    <!-- 10. DIARY -->
+    <section data-background-color="#000">
+      <div class="img-slide">
+        <h3 style="font-size: 1.3em;">
+          <span class="accent">Diário</span> relatando tudo que fez no dia
+        </h3>
+        <img class="full" src="assets/github_journal.png" alt="Diário no GitHub">
+      </div>
+      <aside class="notes">
+        Ele escreve um diário relatando tudo que fez no dia — em markdown, no GitHub.
+      </aside>
+    </section>
+
+    <!-- 11. X METRICS -->
+    <section data-background-color="#000">
+      <div class="img-slide">
+        <h3 style="font-size: 1.3em;">
+          Métricas de do <span class="accent">X</span> usando <span class="accent">API</span>
+        </h3>
+        <img class="full" src="assets/github_x_twitter_follower_metrics.png" alt="Métricas de seguidores">
+      </div>
+      <aside class="notes">
+        Ele pega métricas de seguidores usando a API do X e deixa tudo no GitHub.
+      </aside>
+    </section>
+
+    <!-- 12. DEMO -->
+    <section data-background-color="#000">
+      <h1 style="font-size: 4em; letter-spacing: -0.03em;">
+        <span class="accent">Demo</span>
+      </h1>
+      <aside class="notes">
+        Hora da demo.
+      </aside>
+    </section>
+
+    <!-- 13. THANKS -->
+    <section data-background-color="#000">
+      <h2 style="margin-bottom: 0.3em;">Obrigado!</h2>
+      <p style="font-size: 0.8em; color: #aaa;">
+        <span class="accent">Renato Nitta</span><br>
+        <span style="color:#888;">X:</span> @renatonitta
+      </p>
+      <p style="margin-top: 2em; color: #555; font-size: 0.5em; letter-spacing: 0.2em; text-transform: uppercase;">
+        Claw Con SP · 2026
+      </p>
+    </section>
+
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/notes/notes.js"></script>
+<script>
+  Reveal.initialize({
+    hash: true,
+    controls: true,
+    progress: true,
+    slideNumber: 'c/t',
+    transition: 'fade',
+    backgroundTransition: 'fade',
+    plugins: [ RevealNotes ]
+  });
+</script>
+
+</body>
+</html>
